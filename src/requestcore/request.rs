@@ -102,7 +102,7 @@ pub mod request {
         async fn video_file(url: &str) -> Result<(), Box<dyn std::error::Error + Send + Sync>> {
             use std::process::Stdio;
 
-            println!("Starting yt-dlp video download for: {url}");
+            println!("Starting yt-dlp video download for: {}" , url);
 
             let status = Command::new("yt-dlp.exe")
                 .args([
@@ -121,7 +121,7 @@ pub mod request {
                 .await?;
 
             if !status.success() {
-                return Err(format!("yt-dlp video download failed with status: {status}").into());
+                return Err(format!("yt-dlp video download failed with status: {}" , status).into());
             }
 
             Ok(())
@@ -147,7 +147,7 @@ pub mod request {
                 .await?;
 
             if !status.success() {
-                return Err(format!("yt-dlp failed with status: {status}").into());
+                return Err(format!("yt-dlp failed with status: {}" , status).into());
             }
 
             Ok(())
